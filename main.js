@@ -1,6 +1,6 @@
 var btn1 = document.getElementById("azkar")
 var btn2 = document.getElementById("videos")
-var btn3 = document.getElementById("bakara")
+
 var btn4 = document.getElementById("mulk")
 var btn5 = document.getElementById("wakea")
 var btn6 = document.getElementById("yasin")
@@ -15,9 +15,7 @@ btn1.addEventListener("click",function(){
 btn2.addEventListener("click",function(){
     window.location.href = 'videos.html'
 })
-btn3.addEventListener("click",function(){
-    window.location.href = 'bakara.html'
-})
+
 btn4.addEventListener("click",function(){
     window.location.href = 'mulk.html'
 })
