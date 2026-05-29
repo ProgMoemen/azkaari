@@ -13,6 +13,10 @@ document.getElementById('morn').onclick = (e) => {
     e.preventDefault();
     showSection('mor');
 };
+document.getElementById('work').onclick = (e) => {
+    e.preventDefault();
+    showSection('workSec');
+};
 
 document.getElementById('nig').onclick = (e) => {
     e.preventDefault();
