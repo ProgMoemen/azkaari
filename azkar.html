@@ -7,6 +7,34 @@
       <link rel="icon" type="image/png" href="images/loogoo.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>الأذكار</title>
+    <style>
+        .actions{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.delete-btn{
+    background: #ef4444 !important;
+    color: white;
+
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+
+}
+
+.delete-btn:hover{
+    background: #dc2626 !important;
+
+}
+.delete-btn{
+    background:red;
+    z-index:9999;
+    position:relative;
+}
+    </style>
 </head>
 <body>
     <header class="container-fluid">
@@ -1426,7 +1454,7 @@
 
 <!-- 7 -->
 <div class="zekr">
-    <div class="txt"><p class="zekr">سبحان الله وبحمده سبححان الله العظيم</p></div>
+    <div class="txt"><p class="zekr">سبحان الله وبحمده سبحان الله العظيم</p></div>
     <div class="btns"><button class="btn">100</button></div><hr>
 </div>
 
@@ -1444,7 +1472,7 @@
 
 <!-- 10 -->
 <div class="zekr">
-    <div class="txt"><p class="zekr">ر إله إلا انت سبحانك إني كنت من الظالمينن</p></div>
+    <div class="txt"><p class="zekr">لا إله إلا انت سبحانك إني كنت من الظالمين</p></div>
     <div class="btns"><button class="btn">100</button></div><hr>
 </div>
 
@@ -1492,10 +1520,79 @@
 </section>
 
     <div class="add-zekr">
-        <button id="add-btn">+</button>
+        <button id="addBtn">+</button>
     </div>
 
-<script src="js/azkar.js"></script>
 
+<script>
+    let addBtn = document.getElementById('addBtn');
+    addBtn.onclick = function(){
+        window.location = 'add-zekr.html';
+    }
+let choose = document.getElementById('choose');
+let workSec = document.getElementById('workSec');
+
+
+let azkar = [];
+
+try {
+    azkar = JSON.parse(localStorage.getItem("azkar")) || [];
+} catch {
+    azkar = [];
+}
+
+console.log(azkar);
+
+azkar.forEach((item, index) => {
+
+    let html = `
+    <div class="zekr">
+        <div class="txt">
+            <p>${item.zekr}</p>
+        </div>
+
+        <div class="btns">
+            <button class="btn">${item.repition}</button>
+        </div>
+
+        <div class="actions">
+            <button class="btn delete-btn" data-index="${index}">
+                حذف
+            </button>
+        </div>
+
+        <hr>
+    </div>
+    `;
+
+    if(item.category === "أذكار مختارة"){
+        choose.innerHTML += html;
+    }else if(item.category === "أدعية الدوام"){
+        workSec.innerHTML += html;
+    }
+});
+document.addEventListener("click", function(e){
+
+    if(e.target.classList.contains("delete-btn")){
+
+        let index = e.target.dataset.index;
+
+        let azkar = JSON.parse(localStorage.getItem("azkar")) || [];
+
+        azkar.splice(index, 1);
+
+        localStorage.setItem("azkar", JSON.stringify(azkar));
+
+        location.reload();
+    }
+
+});
+
+
+
+
+
+</script>
+<script src="js/azkar.js"></script>
 </body>
 </html>

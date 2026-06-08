@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أضف ذكر</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background: #0f172a;
+            color: #f1f5f9;
+            font-family: Tahoma, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        form{
+            width: 100%;
+            max-width: 500px;
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        h1{
+            text-align: center;
+            margin-bottom: 25px;
+            color: #38bdf8;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select{
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            background: #0f172a;
+            color: #f1f5f9;
+            font-size: 16px;
+        }
+
+        input:focus,
+        select:focus{
+            outline: none;
+            border-color: #38bdf8;
+        }
+
+        button{
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #38bdf8;
+            color: #0f172a;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="save">
+        <h1>أضف ذكر جديد</h1>
+        <label for="new-zekr">الذكر</label>
+        <input type="text" id="new-zekr">
+
+        <label for="repition">عدد التكرار</label>
+        <input type="number" id="repition">
+
+        <label for="category">أضف إلى القائمة</label>
+        <select id="category">
+            <option>أذكار مختارة</option>
+            <option>أدعية الدوام</option>
+
+        </select>
+
+        <button type="submit" >حفظ</button>
+    </form>
+
+    <script>
+        let save = document.getElementById('save')
+document.getElementById('save').onsubmit = function(e){
+    e.preventDefault();
+    console.log('submitteddd')
+
+    let newZekr = document.getElementById('new-zekr').value;
+    let repition = document.getElementById('repition').value;
+    let category = document.getElementById('category').value;
+
+    if(!newZekr || !repition){
+        alert("املأ كل الحقول");
+        return;
+    }
+
+    let zekrBlock = {
+        zekr: newZekr,
+        repition: repition,
+        category: category
+    };
+
+    let data = JSON.parse(localStorage.getItem("azkar")) || [];
+
+    data.push(zekrBlock);
+
+    localStorage.setItem("azkar", JSON.stringify(data));
+
+    console.log("saved:", data);
+    save.innerHTML += '<p class="alert alert-success">تمت الإضافه بنجاح</p> '
+
+};
+
+    </script>
+
+</body>
+</html>

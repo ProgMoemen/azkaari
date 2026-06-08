@@ -80,7 +80,7 @@ nav ul li a:hover {
 
 .btn {
   background: #38bdf8;
-  border: none;
+  border: none !important;
   padding: 6px 14px;
   border-radius: 8px;
   cursor: pointer;
@@ -129,7 +129,7 @@ nav ul li a:hover {
   left: 20px;
 }
 
-#add-btn {
+#addBtn {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -142,7 +142,7 @@ nav ul li a:hover {
   transition: 0.3s;
 }
 
-#add-btn:hover {
+#addBtn:hover {
   background: #16a34a;
   transform: scale(1.1);
 }
