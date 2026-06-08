@@ -42,6 +42,10 @@ document.getElementById('choosed').onclick = (e) => {
     e.preventDefault();
     showSection('choose');
 };
+document.getElementById('doaaC').onclick = (e) => {
+    e.preventDefault();
+    showSection('chooseDoaa');
+};
 
 // (اختياري) أول ما الصفحة تفتح يظهر الصبح
 window.onload = () => {

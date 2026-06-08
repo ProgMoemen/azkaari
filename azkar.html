@@ -47,6 +47,7 @@
                 <li class="col-6 col-sm-4 col-md-3 col-lg-2" id="wkup"><a href="#" >أذكار الاستيقاظ</a></li>
                 <li class="col-6 col-sm-4 col-md-3 col-lg-2" id="choosed"><a href="#" >أذكار مختارة</a></li>
                 <li class="col-6 col-sm-4 col-md-3 col-lg-2" id="work"><a href="#" >دعاء الدوام</a></li>
+                <li class="col-6 col-sm-4 col-md-3 col-lg-2" id="doaaC"><a href="#" >أدعية مختارة</a></li>
             </ul>
         </nav>
     </header>
@@ -1493,7 +1494,7 @@
 </section>
 
 <section id="workSec" class="azkar">
-
+        <h2>أدعية الدوام</h2>
 <div class="zekr">
     <div class="txt"><p class="zekr">اللهم افتح علي فتوح العارفين بحكمتك وانشر علي رحمتك وذكرني مانسيت واطلق لساني وقوي به عزمي بحولك وقوتك ،وارزقني رزقا حلالا طيبا في ولا اعصيك  فانه لاحول الا بك ياارحم الراحمين</p></div>
     <div class="btns"><button class="btn">1</button></div><hr>
@@ -1518,7 +1519,9 @@
 
 
 </section>
-
+<section id="chooseDoaa" class="azkar">
+        <h2>أدعية مختارة</h2>
+</section>
     <div class="add-zekr">
         <button id="addBtn">+</button>
     </div>
@@ -1531,7 +1534,12 @@
     }
 let choose = document.getElementById('choose');
 let workSec = document.getElementById('workSec');
-
+let mor = document.getElementById('mor');
+let nig = document.getElementById('night');
+let aPray = document.getElementById('aPray');
+let sleep = document.getElementById('sleep');
+let doaa = document.getElementById('chooseDoaa');
+let wkupA = document.getElementById('wkupA');
 
 let azkar = [];
 
@@ -1569,6 +1577,21 @@ azkar.forEach((item, index) => {
         choose.innerHTML += html;
     }else if(item.category === "أدعية الدوام"){
         workSec.innerHTML += html;
+    }
+    else if(item.category === "أدعية مختارة"){
+        doaa.innerHTML += html;
+    }
+    else if(item.category === "أذكار الصباح"){
+        mor.innerHTML += html;
+    }
+    else if(item.category === "أذكار المساء"){
+        nig.innerHTML += html;
+    }
+    else if(item.category === "أذكار الاستيقاظ"){
+        wkupA.innerHTML += html;
+    }
+    else if(item.category === "أذكار بعد الصلاة"){
+        aPray.innerHTML += html;
     }
 });
 document.addEventListener("click", function(e){
